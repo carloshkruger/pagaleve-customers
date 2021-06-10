@@ -4,7 +4,7 @@ const FakeUsersRepository = require("./fakes/FakeUserRepository");
 let findUserByIdService;
 let usersRepository = new FakeUsersRepository();
 
-describe("createUserService", () => {
+describe("findUserByIdService", () => {
   beforeEach(() => {
     findUserByIdService = new FindUserByIdService({ usersRepository });
   });

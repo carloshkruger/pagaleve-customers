@@ -17,3 +17,10 @@ functions:
       - http:
           path: users
           method: post
+
+  findUser:
+    handler: handler.findUser
+    events:
+      - http:
+          path: users/{userId}
+          method: get
