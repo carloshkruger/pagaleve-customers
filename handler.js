@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports.hello = async (event) => {
+module.exports.createUser = async (event) => {
   try {
     const { name, email } = JSON.parse(event.body);
 
