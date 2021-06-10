@@ -1,7 +1,7 @@
 class FakeUsersRepository {
-  async findByEmail() {
-    return null;
-  }
+  async findByEmail() {}
+
+  async findById() {}
 
   async create() {}
 }
