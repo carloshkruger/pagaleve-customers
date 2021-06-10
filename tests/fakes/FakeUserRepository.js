@@ -6,6 +6,8 @@ class FakeUsersRepository {
   async create() {}
 
   async update() {}
+
+  async delete() {}
 }
 
 module.exports = FakeUsersRepository;

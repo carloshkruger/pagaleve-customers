@@ -18,6 +18,7 @@ provider:
             - dynamodb:UpdateItem
             - dynamodb:Scan
             - dynamodb:Query
+            - dynamodb:DeleteItem
             - dynamodb:DescribeTable
           Resource:
             - "arn:aws:dynamodb:us-east-1:*:table/${self:provider.environment.DYNAMODB_USERS_TABLE}"
@@ -46,6 +47,13 @@ functions:
       - http:
           path: users/{userId}
           method: put
+
+  deleteUser:
+    handler: handler.deleteUser
+    events:
+      - http:
+          path: users/{userId}
+          method: delete
 
 resources:
   Resources:

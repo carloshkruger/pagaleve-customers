@@ -21,8 +21,16 @@ class UsersRepository {
     return results[0];
   }
 
+  async findAll() {
+    return UserSchema.scan().exec();
+  }
+
   async update(user) {
     await UserSchema.update(user);
+  }
+
+  async delete(id) {
+    await UserSchema.delete({ id });
   }
 }
 
