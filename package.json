@@ -4,7 +4,7 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "invoke-local:createUser": "sls invoke local -f hello --path tests/request-mocks/create-user.json"
   },
   "keywords": [],
   "author": "Carlos Henrique Kruger",
