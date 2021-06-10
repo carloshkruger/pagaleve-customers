@@ -1,19 +1,9 @@
 "use strict";
 
-module.exports.createUser = async (event) => {
-  try {
-    const { name, email } = JSON.parse(event.body);
+const { createInstance } = require("./src/factories/createUserService");
 
-    return {
-      statusCode: 201,
-      body: JSON.stringify({
-        name,
-        email,
-      }),
-    };
-  } catch (error) {
-    return {
-      statusCode: 500,
-    };
-  }
+const createUserService = createInstance();
+
+module.exports = {
+  createUser: createUserService.execute.bind(createUserService),
 };
