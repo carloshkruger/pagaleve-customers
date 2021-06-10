@@ -3,6 +3,8 @@ class FakeUsersRepository {
 
   async findById() {}
 
+  async findAll() {}
+
   async create() {}
 
   async update() {}

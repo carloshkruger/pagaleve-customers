@@ -55,6 +55,13 @@ functions:
           path: users/{userId}
           method: delete
 
+  listUsers:
+    handler: handler.listUsers
+    events:
+      - http:
+          path: users
+          method: get
+
 resources:
   Resources:
     Users:
