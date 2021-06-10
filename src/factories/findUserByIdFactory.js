@@ -1,8 +1,8 @@
-const FakeUsersRepository = require("../../tests/fakes/FakeUserRepository");
+const UsersRepository = require("../repositories/usersRepository");
 const FindUserByIdService = require("../services/FindUserByIdService");
 
 function createInstance() {
-  const usersRepository = new FakeUsersRepository();
+  const usersRepository = new UsersRepository();
 
   const findUserByIdService = new FindUserByIdService({
     usersRepository,

@@ -1,12 +1,5 @@
-const CreateUserService = require("../services/createUserService");
-
-class UsersRepository {
-  async findByEmail() {
-    return null;
-  }
-
-  async create() {}
-}
+const UsersRepository = require("../repositories/usersRepository");
+const CreateUserService = require("../services/CreateUserService");
 
 function createInstance() {
   const usersRepository = new UsersRepository();

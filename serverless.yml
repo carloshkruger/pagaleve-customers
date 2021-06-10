@@ -6,6 +6,21 @@ provider:
   name: aws
   runtime: nodejs14.x
   lambdaHashingVersion: 20201221
+  environment:
+    DYNAMODB_USERS_TABLE: users
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:Scan
+            - dynamodb:Query
+            - dynamodb:DescribeTable
+          Resource:
+            - "arn:aws:dynamodb:us-east-1:*:table/${self:provider.environment.DYNAMODB_USERS_TABLE}"
 
 plugins:
   - serverless-offline
@@ -24,3 +39,26 @@ functions:
       - http:
           path: users/{userId}
           method: get
+
+  updateUser:
+    handler: handler.updateUser
+    events:
+      - http:
+          path: users/{userId}
+          method: put
+
+resources:
+  Resources:
+    Users:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.DYNAMODB_USERS_TABLE}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1

@@ -4,6 +4,8 @@ class FakeUsersRepository {
   async findById() {}
 
   async create() {}
+
+  async update() {}
 }
 
 module.exports = FakeUsersRepository;

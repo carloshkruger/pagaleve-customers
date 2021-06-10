@@ -18,6 +18,8 @@
     "serverless-offline": "^7.0.0"
   },
   "dependencies": {
+    "aws-sdk": "^2.926.0",
+    "dynamoose": "^2.7.3",
     "uuid": "^8.3.2"
   }
 }
