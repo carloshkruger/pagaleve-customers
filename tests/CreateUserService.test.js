@@ -1,10 +1,10 @@
-const CreateUserService = require("../src/services/createUserService");
+const CreateUserService = require("../src/services/CreateUserService");
 const FakeUsersRepository = require("./fakes/FakeUserRepository");
 
 let createUserService;
 let usersRepository = new FakeUsersRepository();
 
-describe("createUserService", () => {
+describe("CreateUserService", () => {
   beforeEach(() => {
     createUserService = new CreateUserService({ usersRepository });
   });

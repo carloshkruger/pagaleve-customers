@@ -1,3 +1,5 @@
+const { v4 } = require("uuid");
+
 const AppError = require("../utils/AppError");
 const handleError = require("../utils/handleError");
 
@@ -25,7 +27,7 @@ class CreateUserService {
       }
 
       const user = {
-        id: String(new Date().getTime()),
+        id: v4(),
         name,
         email,
         createdAt: new Date().toISOString(),
