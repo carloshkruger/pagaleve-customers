@@ -7,6 +7,7 @@
     "start": "IS_LOCAL=true npx nodemon --exec sls offline --host 0.0.0.0",
     "invoke-local:createUser": "sls invoke local -f createUser --path tests/request-mocks/create-user.json",
     "test": "jest --runInBand --silent",
+    "test:cov": "jest --runInBand --silent --coverage",
     "prepare": "husky install"
   },
   "keywords": [],
