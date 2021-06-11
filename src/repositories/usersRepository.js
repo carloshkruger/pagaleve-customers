@@ -33,6 +33,9 @@ class UsersRepository {
         .or()
         .where("email")
         .contains(text)
+        .or()
+        .where("createdAt")
+        .contains(text)
     ).exec();
   }
 
