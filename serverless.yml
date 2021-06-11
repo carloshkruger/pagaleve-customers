@@ -8,6 +8,8 @@ provider:
   lambdaHashingVersion: 20201221
   environment:
     DYNAMODB_USERS_TABLE: users
+    LOCALSTACK_HOST: ${env:LOCALSTACK_HOST, "localhost"}
+    DYNAMODB_PORT: ${env:DYNAMODB_PORT, "4566"}
   iam:
     role:
       statements:
@@ -23,8 +25,21 @@ provider:
           Resource:
             - "arn:aws:dynamodb:us-east-1:*:table/${self:provider.environment.DYNAMODB_USERS_TABLE}"
 
+package:
+  excludeDevDependencies: true
+  individually: true
+
 plugins:
+  - serverless-dynamodb-local
   - serverless-offline
+
+custom:
+  dynamodb:
+    start:
+      host: ${self:provider.environment.LOCALSTACK_HOST}
+      port: ${self:provider.environment.DYNAMODB_PORT}
+      migrate: true
+      noStart: true
 
 functions:
   createUser:

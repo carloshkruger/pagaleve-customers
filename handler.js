@@ -1,5 +1,7 @@
 "use strict";
 
+const setupDynamooseDBClient = require("./src/utils/setupDynamooseDBClient");
+
 const { createInstance } = require("./src/factories/createUserService");
 const { deleteUserFactory } = require("./src/factories/deleteUserFactory");
 const {
@@ -13,6 +15,8 @@ const findUserByIdService = createInstanceFindUserByIdFactory();
 const updateUserService = updateUserFactory();
 const deleteUserService = deleteUserFactory();
 const listUsersService = listUsersFactory();
+
+setupDynamooseDBClient();
 
 module.exports = {
   createUser: createUserService.execute.bind(createUserService),
