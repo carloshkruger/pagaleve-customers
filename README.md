@@ -3,6 +3,9 @@
 </h1>
 
 Serverless application for a Customers API running on AWS infrastructure using Lambda and DynamoDB.
+There is a Insomnia config file (Insomnia_requests_config) on the project root folder that has all API endpoints. It can be useful to test the local project and the API in production on AWS.
+Each service (Lambda and DynamoDB) has monitoring and logging.
+There is a CI/CD pipeline using GitHub actions. Each time a push is made to the master branch, the action is triggered, tests are executed, and then deployed to AWS.
 
 To run the application you must have installed:
 
