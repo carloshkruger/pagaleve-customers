@@ -1,4 +1,4 @@
-const UsersRepository = require("../repositories/usersRepository");
+const UsersRepository = require("../repositories/UsersRepository");
 const CreateUserService = require("../services/CreateUserService");
 
 function createUserFactory() {

@@ -1,4 +1,4 @@
-const UsersRepository = require("../repositories/usersRepository");
+const UsersRepository = require("../repositories/UsersRepository");
 const FindUserByIdService = require("../services/FindUserByIdService");
 
 function findUserByIdFactory() {
