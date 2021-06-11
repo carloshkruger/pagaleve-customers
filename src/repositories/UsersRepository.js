@@ -13,13 +13,9 @@ class UsersRepository {
   }
 
   async findById(id) {
-    const results = await UserSchema.query({
-      id: {
-        eq: id,
-      },
-    }).exec();
+    const result = await UserSchema.get({ id });
 
-    return results[0];
+    return result;
   }
 
   async freeTextSearch(text) {
