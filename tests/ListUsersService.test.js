@@ -9,6 +9,16 @@ describe("UpdateUserService", () => {
     listUsersService = new ListUsersService({ usersRepository });
   });
 
+  test("should return an error if the repository throws", async () => {
+    jest.spyOn(usersRepository, "findAll").mockImplementation(async () => {
+      throw new Error();
+    });
+
+    const response = await listUsersService.execute();
+
+    expect(response.statusCode).toBe(500);
+  });
+
   test("should return the user data if the user was updated", async () => {
     jest.spyOn(usersRepository, "findAll").mockImplementation(async () => [
       {

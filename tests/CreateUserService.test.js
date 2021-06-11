@@ -32,24 +32,29 @@ describe("CreateUserService", () => {
   });
 
   test("should return an error if the email provided is already in use", async () => {
+    const findByEmailSpy = jest.spyOn(usersRepository, "findByEmail");
+
     jest
       .spyOn(usersRepository, "findByEmail")
       .mockImplementation(async () => ({}));
 
+    const email = "email_already_in_use@email.com";
+
     const response = await createUserService.execute({
       body: JSON.stringify({
         name: "valid name",
-        email: "email_already_in_use@email.com",
+        email,
       }),
     });
 
     expect(response.statusCode).toBe(409);
+    expect(findByEmailSpy).toHaveBeenCalledWith(email);
   });
 
-  test("should success if the valid values are provided", async () => {
-    jest
-      .spyOn(usersRepository, "findByEmail")
-      .mockImplementation(async () => null);
+  test("should return an error if the repository throws", async () => {
+    jest.spyOn(usersRepository, "findByEmail").mockImplementation(async () => {
+      throw new Error();
+    });
 
     const response = await createUserService.execute({
       body: JSON.stringify({
@@ -58,6 +63,28 @@ describe("CreateUserService", () => {
       }),
     });
 
+    expect(response.statusCode).toBe(500);
+  });
+
+  test("should success if the valid values are provided", async () => {
+    const findByEmailSpy = jest.spyOn(usersRepository, "findByEmail");
+    const createSpy = jest.spyOn(usersRepository, "create");
+
+    jest
+      .spyOn(usersRepository, "findByEmail")
+      .mockImplementation(async () => null);
+
+    const email = "valid_email@email.com";
+
+    const response = await createUserService.execute({
+      body: JSON.stringify({
+        name: "valid name",
+        email,
+      }),
+    });
+
     expect(response.statusCode).toBe(201);
+    expect(findByEmailSpy).toHaveBeenCalledWith(email);
+    expect(createSpy).toHaveBeenCalled();
   });
 });

@@ -34,8 +34,12 @@ describe("DeleteUserService", () => {
   });
 
   test("should delete the user", async () => {
+    const deleteSpy = jest.spyOn(usersRepository, "delete");
+
+    const userId = "123123";
+
     jest.spyOn(usersRepository, "findById").mockImplementation(async () => ({
-      id: new Date().getTime(),
+      id: userId,
       name: "valid name",
       email: "valid_email@email.com",
       createdAt: new Date().toISOString(),
@@ -43,10 +47,11 @@ describe("DeleteUserService", () => {
 
     const response = await deleteUserService.execute({
       pathParameters: {
-        userId: "123123",
+        userId,
       },
     });
 
     expect(response.statusCode).toBe(204);
+    expect(deleteSpy).toHaveBeenCalledWith(userId);
   });
 });
