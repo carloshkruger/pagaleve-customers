@@ -46,12 +46,14 @@ npm run test:cov
 
 ### Application features
 
-- Create user
-- Update user
-- Find user
-- Delete user
-- List users
-- Free text search across all user fields
+The current production URL is https://78pohtj9pi.execute-api.us-east-1.amazonaws.com/dev
+
+- Create user (POST /users)
+- Update user (PUT /users)
+- Find user (GET /users/:id)
+- Delete user (DELETE /users/:id)
+- List users (GET /users)
+- Free text search across all user fields (GET /search?text=)
 
 ### Technologies
 
