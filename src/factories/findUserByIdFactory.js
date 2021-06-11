@@ -1,7 +1,7 @@
 const UsersRepository = require("../repositories/usersRepository");
 const FindUserByIdService = require("../services/FindUserByIdService");
 
-function createInstance() {
+function findUserByIdFactory() {
   const usersRepository = new UsersRepository();
 
   const findUserByIdService = new FindUserByIdService({
@@ -12,5 +12,5 @@ function createInstance() {
 }
 
 module.exports = {
-  createInstance,
+  findUserByIdFactory,
 };

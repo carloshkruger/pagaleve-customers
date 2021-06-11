@@ -1,7 +1,7 @@
 const UsersRepository = require("../repositories/usersRepository");
 const CreateUserService = require("../services/CreateUserService");
 
-function createInstance() {
+function createUserFactory() {
   const usersRepository = new UsersRepository();
 
   const createUserService = new CreateUserService({
@@ -12,5 +12,5 @@ function createInstance() {
 }
 
 module.exports = {
-  createInstance,
+  createUserFactory,
 };

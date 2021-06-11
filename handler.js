@@ -1,18 +1,14 @@
-"use strict";
-
 const setupDynamooseDBClient = require("./src/utils/setupDynamooseDBClient");
 
-const { createInstance } = require("./src/factories/createUserService");
+const { createUserFactory } = require("./src/factories/createUserFactory");
 const { deleteUserFactory } = require("./src/factories/deleteUserFactory");
-const {
-  createInstance: createInstanceFindUserByIdFactory,
-} = require("./src/factories/findUserByIdFactory");
+const { findUserByIdFactory } = require("./src/factories/findUserByIdFactory");
 const { updateUserFactory } = require("./src/factories/updateUserFactory");
 const { listUsersFactory } = require("./src/factories/listUsersFactory");
 const { searchFactory } = require("./src/factories/searchFactory");
 
-const createUserService = createInstance();
-const findUserByIdService = createInstanceFindUserByIdFactory();
+const createUserService = createUserFactory();
+const findUserByIdService = findUserByIdFactory();
 const updateUserService = updateUserFactory();
 const deleteUserService = deleteUserFactory();
 const listUsersService = listUsersFactory();
