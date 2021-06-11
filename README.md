@@ -2,7 +2,7 @@
     Pagaleve Customers
 </h1>
 
-Serverless application for a Customers API.
+Serverless application for a Customers API running on AWS infrastructure using Lambda and DynamoDB.
 
 To run the application you must have installed:
 
@@ -36,8 +36,10 @@ npm run start
 # run tests
 npm run test
 
-```
+# run tests and generate a coverage report
+npm run test:cov
 
+```
 
 ### Application features
 
