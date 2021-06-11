@@ -10,6 +10,10 @@ class CreateUserService {
 
   async execute(event) {
     try {
+      if (!event.body) {
+        throw new AppError("data is required.");
+      }
+
       const { name, email } = JSON.parse(event.body);
 
       if (!name) {

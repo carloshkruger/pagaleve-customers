@@ -9,6 +9,12 @@ describe("CreateUserService", () => {
     createUserService = new CreateUserService({ usersRepository });
   });
 
+  test("should return an error if the body is not provided", async () => {
+    const response = await createUserService.execute({});
+
+    expect(response.statusCode).toBe(400);
+  });
+
   test("should return an error if the name is not provided", async () => {
     const response = await createUserService.execute({
       body: JSON.stringify({

@@ -8,6 +8,10 @@ class UpdateUserService {
 
   async execute(event) {
     try {
+      if (!event.body) {
+        throw new AppError("data is required.");
+      }
+
       const { userId } = event.pathParameters;
       const { name, email } = JSON.parse(event.body);
 

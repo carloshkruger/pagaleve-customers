@@ -9,6 +9,12 @@ describe("UpdateUserService", () => {
     updateUserService = new UpdateUserService({ usersRepository });
   });
 
+  test("should return an error if the body is not provided", async () => {
+    const response = await updateUserService.execute({});
+
+    expect(response.statusCode).toBe(400);
+  });
+
   test("should return an error if the userId is not provided", async () => {
     const response = await updateUserService.execute({
       pathParameters: {
