@@ -1,3 +1,4 @@
+const dynamoose = require("dynamoose");
 const UserSchema = require("../schemas/UserSchema");
 
 class UsersRepository {
@@ -19,6 +20,20 @@ class UsersRepository {
     }).exec();
 
     return results[0];
+  }
+
+  async freeTextSearch(text) {
+    return UserSchema.scan(
+      new dynamoose.Condition()
+        .where("id")
+        .contains(text)
+        .or()
+        .where("name")
+        .contains(text)
+        .or()
+        .where("email")
+        .contains(text)
+    ).exec();
   }
 
   async findAll() {

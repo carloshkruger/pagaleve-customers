@@ -5,6 +5,8 @@ class FakeUsersRepository {
 
   async findAll() {}
 
+  async freeTextSearch() {}
+
   async create() {}
 
   async update() {}

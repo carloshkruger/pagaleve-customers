@@ -77,6 +77,13 @@ functions:
           path: users
           method: get
 
+  search:
+    handler: handler.search
+    events:
+      - http:
+          path: search
+          method: get
+
 resources:
   Resources:
     Users:
